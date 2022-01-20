@@ -305,7 +305,7 @@ export const AuctionCreateView = () => {
             i => (i as TierDummyEntry).winningConfigType !== undefined,
           )),
       );
-      let filteredTiers = tiers.filter(
+      const filteredTiers = tiers.filter(
         i => i.items.length > 0 && i.winningSpots.length > 0,
       );
 
@@ -351,7 +351,7 @@ export const AuctionCreateView = () => {
             });
             // Ok now we have combined ranges from this tier range. Now we merge them into the ranges
             // at the top level.
-            let oldRanges = ranges;
+            const oldRanges = ranges;
             ranges = [];
             let oldRangeCtr = 0,
               tierRangeCtr = 0;
@@ -718,7 +718,7 @@ const CategoryStep = (props: {
       <Row className="call-to-action">
         <h2>List an item</h2>
         <p>
-          First time listing on Metaplex? <a>Read our sellers' guide.</a>
+          First time listing on Cardolana? <a>Read our sellers' guide.</a>
         </p>
       </Row>
       <Row justify={width < 768 ? 'center' : 'start'}>
@@ -984,7 +984,7 @@ const CopiesStep = (props: {
     props.attributes.quoteMintInfoExtended = useTokenList().tokenMap.get(props.attributes.quoteMintAddress)!
   }
 
-  let artistFilter = (i: SafetyDepositDraft) =>
+  const artistFilter = (i: SafetyDepositDraft) =>
     !(i.metadata.info.data.creators || []).find((c: Creator) => !c.verified);
   let filter: (i: SafetyDepositDraft) => boolean = (i: SafetyDepositDraft) =>
     true;
@@ -1000,7 +1000,7 @@ const CopiesStep = (props: {
       );
   }
 
-  let overallFilter = (i: SafetyDepositDraft) => filter(i) && artistFilter(i);
+  const overallFilter = (i: SafetyDepositDraft) => filter(i) && artistFilter(i);
 
   return (
     <>
@@ -1169,7 +1169,7 @@ const PriceAuction = (props: {
         <p>
           Set the price for your auction.
           {props.attributes.quoteMintAddress != WRAPPED_SOL_MINT.toBase58() && ` Warning! the auction quote mint is `}
-          {props.attributes.quoteMintAddress != WRAPPED_SOL_MINT.toBase58()&& <a href={`https://explorer.solana.com/address/${props.attributes?.quoteMintAddress}`} target="_blank"> {props.attributes?.quoteMintAddress != WRAPPED_SOL_MINT.toBase58() &&
+          {props.attributes.quoteMintAddress != WRAPPED_SOL_MINT.toBase58()&& <a href={`https://explorer.solana.com/address/${props.attributes?.quoteMintAddress}`} target="_blank" rel="noreferrer"> {props.attributes?.quoteMintAddress != WRAPPED_SOL_MINT.toBase58() &&
             `${quoteMintName} (${quoteMintExt})`}
           </a>}
         </p>
@@ -1557,7 +1557,7 @@ const TierTableStep = (props: {
       winningSpots: [...wc.winningSpots],
     }));
   };
-  let artistFilter = (i: SafetyDepositDraft) =>
+  const artistFilter = (i: SafetyDepositDraft) =>
     !(i.metadata.info.data.creators || []).find((c: Creator) => !c.verified);
   const options: { label: string; value: number }[] = [];
   for (let i = 0; i < props.maxWinners; i++) {
@@ -1920,7 +1920,7 @@ const ReviewStep = (props: {
 
   const balance = (account?.lamports || 0) / LAMPORTS_PER_SOL;
 
-  let item = props.attributes.items?.[0];
+  const item = props.attributes.items?.[0];
 
   const handleConfirm = () => {
     props.setAttributes({
@@ -2055,7 +2055,7 @@ const WaitingStep = (props: {
     >
       <Progress type="circle" percent={progress} />
       <div className="waiting-title">
-        Your creation is being listed with Metaplex...
+        Your creation is being listed with Cardolana...
       </div>
       <div className="waiting-subtitle">This can take up to 30 seconds.</div>
     </div>
@@ -2073,13 +2073,13 @@ const Congrats = (props: {
 
   const newTweetURL = () => {
     const params = {
-      text: "I've created a new NFT auction on Metaplex, check it out!",
+      text: "I've created a new NFT auction on Cardolana, check it out!",
       url: `${
         window.location.origin
       }/#/auction/${props.auction?.auction.toString()}`,
-      hashtags: 'NFT,Crypto,Metaplex',
-      // via: "Metaplex",
-      related: 'Metaplex,Solana',
+      hashtags: 'NFT,Crypto,Cardolana',
+      // via: "Cardolana",
+      related: 'Cardolana,Solana',
     };
     const queryParams = new URLSearchParams(params).toString();
     return `https://twitter.com/intent/tweet?${queryParams}`;

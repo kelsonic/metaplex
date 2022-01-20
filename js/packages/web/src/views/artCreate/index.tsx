@@ -241,9 +241,9 @@ const CategoryStep = (props: {
       <Row className="call-to-action">
         <h2>Create a new item</h2>
         <p>
-          First time creating on Metaplex?{' '}
+          First time creating on Cardolana?{' '}
           <a href="https://docs.metaplex.com/create-store/sell" target="_blank" rel="noreferrer">
-            Read our creators’ guide.
+            Read our creator&apos;s guide.
           </a>
         </p>
       </Row>
@@ -1281,13 +1281,13 @@ const Congrats = (props: {
 
   const newTweetURL = () => {
     const params = {
-      text: "I've created a new NFT artwork on Metaplex, check it out!",
+      text: "I've created a new NFT artwork on Cardolana, check it out!",
       url: `${
         window.location.origin
       }/#/art/${props.nft?.metadataAccount.toString()}`,
-      hashtags: 'NFT,Crypto,Metaplex',
-      // via: "Metaplex",
-      related: 'Metaplex,Solana',
+      hashtags: 'NFT,Crypto,Cardolana',
+      // via: "Cardolana",
+      related: 'Cardolana,Solana',
     };
     const queryParams = new URLSearchParams(params).toString();
     return `https://twitter.com/intent/tweet?${queryParams}`;
